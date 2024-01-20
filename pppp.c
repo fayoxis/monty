@@ -13,11 +13,11 @@
 void push_to_add(stack_t **new_node, __attribute__(
 (unused))unsigned int line_number)
 {
-	stack_t *current;
+        stack_t *current;
 
-	while (new_node == NULL || *new_node == NULL)
+	if (new_node == NULL || *new_node == NULL)
 		exit(EXIT_FAILURE);
-	while (head == NULL)
+	if (head == NULL)
 	{
 		head = *new_node;
 		return;
