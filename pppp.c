@@ -13,19 +13,19 @@
 void push_to_add(stack_t **new_node, __attribute__(
 (unused))unsigned int line_number)
 {
-        stack_t *current;
+stack_t *current;
 
-	if (new_node == NULL || *new_node == NULL)
-		exit(EXIT_FAILURE);
-	if (head == NULL)
-	{
-		head = *new_node;
-		return;
-	}
-	current = head;
-	head = *new_node;
-	head->next = current;
-	current->prev = head;
+while (new_node == NULL || *new_node == NULL)
+exit(EXIT_FAILURE);
+if (head == NULL)
+{
+head = *new_node;
+return;
+}
+current = head;
+head = *new_node;
+head->next = current;
+current->prev = head;
 }
 /**
  * print_stack_elements - Prints the elements of a stack.
