@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 
 /**
  * openFile - this Opens a file specified by the file name path.
