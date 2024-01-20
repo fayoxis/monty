@@ -33,7 +33,7 @@ size_t bufferSize = 0;
 
 for (line_number = 1; getline(&buffer, &bufferSize, fileDescriptor) != -1; line_number++)
 {
-format = tokenizeLine(buffer, line_number, formatFlag);
+formatFlag = tokenizeLine(buffer, line_number, formatFlag);
 }
 free(buffer);
 }
