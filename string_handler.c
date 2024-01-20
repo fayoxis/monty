@@ -12,7 +12,7 @@ void printAsciiValue(stack_t **stackPtr, unsigned int line_number)
 
 	/* Check if the stack is empty */
 	if (stackPtr == NULL || *stackPtr == NULL)
-		handleStr_Errors(11, lineNum);
+		handleStr_Errors(11, line_number);
 	/* Traverse the stack to find the top element */
 	while (currentNode->next != NULL)
 	{
@@ -21,7 +21,7 @@ void printAsciiValue(stack_t **stackPtr, unsigned int line_number)
 	asciiValue = currentNode->n;
 	/* Check if the ASCII value is within the valid range */
 	if (asciiValue < 0 || asciiValue > 127)
-		handleStr_Errors(10, lineNum);
+		handleStr_Errors(10, line_number);
 	/* Print the ASCII character */
 	printf("%c\n", asciiValue);
 }
