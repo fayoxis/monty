@@ -30,7 +30,6 @@ void r_File(FILE *fileDescriptor)
 int line_number, formatFlag = 0;
 char *buffer = NULL;
 size_t bufferSize = 0;
-
 for (line_number = 1; getline(&buffer, &bufferSize, fileDescriptor) != -1; line_number++)
 {
 formatFlag = tokenizeLine(buffer, line_number, formatFlag);
