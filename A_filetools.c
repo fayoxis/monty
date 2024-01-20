@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 /**
  * openFile - this Opens a file specified by the file name path.
@@ -26,17 +27,15 @@ void openFile(char *fileName)
 
 void r_File(FILE *fileDescriptor)
 {
-	int line_number = 1;
-	int formatFlag = 0;
-	char *buffer = NULL;
-	size_t bufferSize = 0;
+int line_number, formatFlag = 0;
+char *buffer = NULL;
+size_t bufferSize = 0;
 
-	while (getline(&buffer, &bufferSize, fileDescriptor) != -1)
-	{
-		formatFlag = tokenizeLine(buffer, line_number, formatFlag);
-		line_number++;
-	}
-	free(buffer);
+for (line_number = 1; getline(&buffer, &bufferSize, fileDescriptor) != -1; line_number++)
+{
+format = tokenizeLine(buffer, line_number, formatFlag);
+}
+free(buffer);
 }
 
 /**
