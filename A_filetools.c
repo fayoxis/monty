@@ -62,4 +62,3 @@ return (1);
 findFunction(opcode, token, line_number, storageFormat);
 return (storageFormat);
 }
-
