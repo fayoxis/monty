@@ -58,6 +58,8 @@ int tokenizeLine(char *line, int lineNum, int storageFormat)
 			return (0);
 		if (strcmp(token, "queue") == 0)
 			return (1);
+		if (strcmp(token, "Push") == 0)
+                 token = "push";
 		findFunction(token, strtok(NULL, delimiter), lineNum, storageFormat);
 		token = strtok(NULL, delimiter);
 	}
