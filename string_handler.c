@@ -2,7 +2,7 @@
 
 /**
  * printAsciiValue - Prints the ASCII value of the top element in the stack.
- * @stackPtr: Pointer to a pointer pointing to the top node of the stack.
+ * @stack: Pointer to a pointer pointing to the top node of the stack.
  * @line_number: Unsigned integer representing the line number of the opcode.
  */
 void printAsciiValue(stack_t **stackPtr, unsigned int line_number)
