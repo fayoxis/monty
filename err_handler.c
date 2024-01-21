@@ -48,13 +48,13 @@ void F_errorche(int error_code, ...)
 /**
  * handleErrors - Function that handles errors in the program.
  *
- * @errorCode: The error codes and their meanings are as follows:
+ * @error_code: The error codes and their meanings are as follows:
  * Error1: Empty stack when 'pint' is called.
  * Error2: Empty stack when 'pop' is called.
  * Error3: Stack is too short for the operation.
  * Error4: Division by zero.
  */
-void handleErrors(int errorCode, ...)
+void handleErrors(int error_code, ...)
 {
         va_list ag;
 	char *op;
@@ -93,11 +93,11 @@ void handleErrors(int errorCode, ...)
  *
  * This function is responsible for handling errors
  * that occur suring string processing
- * @errorCode: The error codes are as follows:
+ * @error_code: The error codes are as follows:
  * The which is number inside a node is outside the ASCII bounds.
  * The stack is totally empty.
  */
-void handleStr_Errors(int errorCode, ...)
+void handleStr_Errors(int error_code, ...)
 {
         va_list ag;
 	int l_num;
