@@ -63,20 +63,16 @@ void print_stack_elements(stack_t **stack, unsigned int line_number)
  */
 void poptop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current;
-
-	if (stack == NULL || *stack == NULL)
-		handleErrors(7, line_number);
-
-	while (*stack != NULL)
-	{
-		current = *stack;
-		*stack = current->next;
-		if (*stack != NULL)
-			(*stack)->prev = NULL;
-		free(current);
-	}
+ if (stack == NULL || *stack == NULL)
+        handleErrors(7, line_number);
+    stack_t *temp = *stack;
+    *stack = (*stack)->next;
+    if (*stack != NULL)
+        (*stack)->prev = NULL;
+    free(temp);
 }
+
+
 /**
  * printTopNode - Prints the value of the top node in the stack.
  * @stack: Pointer to a pointer pointing to the top node of the stack.
