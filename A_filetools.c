@@ -51,7 +51,7 @@ int tokenizeLine(char *line, int line_number, int storageFormat)
 	const char *delimiter = "\n ";
 
 	if (buffer == NULL)
-		err(4);
+		F_errorche(4);
 
 	opcode = strtok(buffer, delimiter);
 	if (opcode == NULL)
