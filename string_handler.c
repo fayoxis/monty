@@ -7,13 +7,12 @@
  */
 void printAsciiValue(stack_t **stack, unsigned int line_number)
 {
-	
 	int asciiValue;
 	stack_t *currentNode = *stack;
 
 	/* Check if the stack is empty */
 	if (stack == NULL || *stack == NULL)
-		handleStr_Errors(11, lineNum);
+		handleStr_Errors(11, line_number);
 	/* Traverse the stack to find the top element */
 	while (currentNode->next != NULL)
 	{
@@ -22,27 +21,27 @@ void printAsciiValue(stack_t **stack, unsigned int line_number)
 	asciiValue = currentNode->n;
 	/* Check if the ASCII value is within the valid range */
 	if (asciiValue < 0 || asciiValue > 127)
-		handleStr_Errors(10, lineNum);
+		handleStr_Errors(10, line_number);
 	/* Print the ASCII character */
 	printf("%c\n", asciiValue);
 }
 /**
  * printString - Prints a string stored in the stack.
- * @stackPtr: Pointer to a pointer pointing to the top node of the stack.
+ * @stack: Pointer to a pointer pointing to the top node of the stack.
  * @lineNum: The line number of the opcode (unused in this function).
  */
-void printString(stack_t **stackPtr, __attribute__((unused))
+void printString(stack_t **stack, __attribute__((unused))
 unsigned int lineNum)
 {
 	int asciiValue;
 	stack_t *tmpNode;
 
-	if (stackPtr == NULL || *stackPtr == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		printf("\n");
 		return;
 	}
-	tmpNode = *stackPtr;
+	tmpNode = *stack;
 	do {
 		asciiValue = tmpNode->n;
 		if (asciiValue <= 0 || asciiValue > 127)
