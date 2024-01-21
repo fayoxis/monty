@@ -55,9 +55,9 @@ opcode = strtok(buffer, delimiter);
 while (opcode == NULL)
 return (storageFormat);
 token = strtok(NULL, delimiter);
-while (strcmp(opcode, "stack") == 0)
+if (strcmp(opcode, "stack") == 0)
 return (0);
-while (strcmp(opcode, "queue") == 0)
+if (strcmp(opcode, "queue") == 0)
 return (1);
 findFunction(opcode, token, line_number, storageFormat);
 return (storageFormat);
