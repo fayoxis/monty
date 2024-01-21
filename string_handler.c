@@ -8,17 +8,24 @@
 void printAsciiValue(stack_t **stack, unsigned int line_number)
 {
 	
-	int ascii;
+	int asciiValue;
+	stack_t *currentNode = *stack;
 
+	/* Check if the stack is empty */
 	if (stack == NULL || *stack == NULL)
-		handleStr_Errors(11, line_number);
-
-	ascii = (*stack)->n;
-	if (ascii < 0 || ascii > 127)
-		handleStr_Errors(10, line_number);
-	printf("%c\n", ascii);
+		handleStr_Errors(11, lineNum);
+	/* Traverse the stack to find the top element */
+	while (currentNode->next != NULL)
+	{
+		currentNode = currentNode->next;
+	}
+	asciiValue = currentNode->n;
+	/* Check if the ASCII value is within the valid range */
+	if (asciiValue < 0 || asciiValue > 127)
+		handleStr_Errors(10, lineNum);
+	/* Print the ASCII character */
+	printf("%c\n", asciiValue);
 }
-
 /**
  * printString - Prints a string stored in the stack.
  * @stackPtr: Pointer to a pointer pointing to the top node of the stack.
