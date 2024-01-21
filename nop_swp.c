@@ -29,12 +29,16 @@ stack_t *tmp;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		handleErrors(8, line_number, "swap");
-	tmp = (*stack)->next;
+
+	stack_t *tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
+
 	if (tmp->next != NULL)
 		tmp->next->prev = *stack;
+
 	tmp->next = *stack;
 	(*stack)->prev = tmp;
 	tmp->prev = NULL;
+
 	*stack = tmp;
 }
