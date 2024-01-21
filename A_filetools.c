@@ -40,28 +40,29 @@ free(buffer);
  * tokenizeLine - Tokenizes a line into separate tokens to determine
  * which function to call.
  * @line: this is The line from the file.
- * @lineNum: this is The line number.
+ * @line_number: this is The line number.
  * @storageFormat: The storage format. If 0, nodes will be entered as a stack.
  * Return: Returns 0 if the opcode is "stack", 1 if "queue".
  */
-int tokenizeLine(char *line, int lineNum, int storageFormat)
+int tokenizeLine(char *line, int line_number, int storageFormat)
 {
-	char *token;
+
+	char *opcode, *token;
 	const char *delimiter = "\n ";
 
-	if (line == NULL)
-		F_errorche(4);
-	token = strtok(line, delimiter);
-	while (token != NULL)
-	{
-		if (strcmp(token, "stack") == 0)
-			return (0);
-		if (strcmp(token, "queue") == 0)
-			return (1);
-		if (strcmp(token, "Push") == 0)
-                 token = "push";
-		findFunction(token, strtok(NULL, delimiter), lineNum, storageFormat);
-		token = strtok(NULL, delimiter);
-	}
+	if (buffer == NULL)
+		err(4);
+
+	opcode = strtok(buffer, delimiter);
+	if (opcode == NULL)
+		return (storageFormat);
+	token = strtok(NULL, delimiter);
+
+	if (strcmp(opcode, "stack") == 0)
+		return (0);
+	if (strcmp(opcode, "queue") == 0)
+		return (1);
+
+	findFunction(opcode, token, line_number, storageFormat);
 	return (storageFormat);
 }
