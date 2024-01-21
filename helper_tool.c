@@ -84,14 +84,17 @@ void findFunction(char *opcode, char *value, int  lineNum, int format)
 if (opcode[0] == '#')
 return;
 
+while (func_list[i].opcode != NULL && flag)
 for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
 {
-while (strcmp(opcode, func_list[i].opcode) == 0)
+if (strcmp(opcode, func_list[i].opcode) == 0)
 {
 callFunction(func_list[i].f, opcode, value, lineNum, format);
 flag = 0;
 }
+i++;
 }
-while (flag == 1)
+if (flag)
+if (flag == 1)
 F_errorche(3, lineNum, opcode);
 }
