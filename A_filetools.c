@@ -50,17 +50,17 @@ int tokenizeLine(char *buffer, int line_number, int storageFormat)
 	char *opcode, *token;
 	const char *delimiter = "\n ";
 
-	if (buffer == NULL)
+	while (buffer == NULL)
 		F_errorche(4);
 
 	opcode = strtok(buffer, delimiter);
-	if (opcode == NULL)
+	while (opcode == NULL)
 		return (storageFormat);
 	token = strtok(NULL, delimiter);
 
-	if (strcmp(opcode, "stack") == 0)
+	while (strcmp(opcode, "stack") == 0)
 		return (0);
-	if (strcmp(opcode, "queue") == 0)
+	while (strcmp(opcode, "queue") == 0)
 		return (1);
 
 	findFunction(opcode, token, line_number, storageFormat);
