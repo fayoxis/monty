@@ -39,12 +39,12 @@ free(buffer);
 /**
  * tokenizeLine - Tokenizes a line into separate tokens to determine
  * which function to call.
- * @line: this is The line from the file.
+ * @buffer: this is The line from the file.
  * @line_number: this is The line number.
  * @storageFormat: The storage format. If 0, nodes will be entered as a stack.
  * Return: Returns 0 if the opcode is "stack", 1 if "queue".
  */
-int tokenizeLine(char *line, int line_number, int storageFormat)
+int tokenizeLine(char *buffer, int line_number, int storageFormat)
 {
 
 	char *opcode, *token;
