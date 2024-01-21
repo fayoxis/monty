@@ -56,7 +56,7 @@ void rotateFirstToBottom(stack_t **, unsigned int);
 void rotateStackTop(stack_t **, unsigned int);
 void openFile(char *fileName);
 void r_File(FILE *f_Des);
-int tokenizeLine(char *line, int line_number, int storageFormat);
+int tokenizeLine(char *buffer, int line_number, int storageFormat);
 void F_errorche(int error_code, ...);
 void handleErrors(int errorCode, ...);
 void handleStr_Errors(int errorCode, ...);
