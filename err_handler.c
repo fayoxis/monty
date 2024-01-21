@@ -98,23 +98,20 @@ void handleErrors(int errorCode, ...)
  */
 void handleStr_Errors(int errorCode, ...)
 {
-	va_list args;
-	int line_num;
+va_list args;
+int line_num;
 
-	va_start(args, errorCode);
-	line_num = va_arg(args, int);
+va_start(args, errorCode);
+line_num = va_arg(args, int);
 
-	if (errorCode == 10)
-	{
-		fprintf(stderr, "Line %d: Cannot process character, value is out of range\n",
-				line_num);
-	}
-	else if (errorCode == 11)
-	{
-		fprintf(stderr, "Line %d: Cannot process character, stack is empty\n",
-				line_num);
-	}
-
-	free_nodes();
-	exit(EXIT_FAILURE);
+if (errorCode == 10)
+{
+fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+}
+else if (errorCode == 11)
+{
+fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);
+}
+free_nodes();
+exit(EXIT_FAILURE);
 }
