@@ -49,7 +49,7 @@ void print_stack_elements(stack_t **stack, unsigned int line_number);
 void poptop(stack_t **stack, unsigned int line_number);
 void printTopNode(stack_t **stack, unsigned int line_number);
 void push_to_add(stack_t **, unsigned int);
-void printAsciiValue(stack_t **stackPtr, unsigned int line_number);
+void printAsciiValue(stack_t **stack, unsigned int line_number);
 void printString(stack_t **, unsigned int);
 
 void rotateFirstToBottom(stack_t **, unsigned int);
