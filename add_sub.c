@@ -9,14 +9,14 @@
 void addNodes(stack_t **stack, unsigned int line_number)
 
 {
-	int sum;
+	int product;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	while (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		handleErrors(8, line_number, "add");
 
 	(*stack) = (*stack)->next;
-	sum = (*stack)->n + (*stack)->prev->n;
-	(*stack)->n = sum;
+	product = (*stack)->n + (*stack)->prev->n;
+	(*stack)->n = product;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
@@ -28,15 +28,13 @@ void addNodes(stack_t **stack, unsigned int line_number)
  */
 void sub_element(stack_t **stack, unsigned int line_number)
 {
-int sum;
+	int product;
 
-if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-
-handleErrors(8, line_number, "sub");
-
-(*stack) = (*stack)->next;
-sum = (*stack)->n - (*stack)->prev->n;
-(*stack)->n = sum;
-free((*stack)->prev);
-(*stack)->prev = NULL;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		handleErrors(8, line_number, "sub");
+	(*stack) = (*stack)->next;
+	product = (*stack)->n - (*stack)->prev->n;
+	(*stack)->n = product;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
