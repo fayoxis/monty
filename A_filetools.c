@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 
 /**
  * openFile - this Opens a file specified by the file name path.
@@ -20,17 +19,17 @@ void openFile(char *fileName)
 /**
  * r_File - this will actually Read the lines from a file and
  * parses them.
- * @fileDescriptor: it is a Pointer  that points to the
+ * @f_Des: it is a Pointer  that points to the
  * file descriptor.
  * Return: void
  */
 
-void r_File(FILE *fileDescriptor)
+void r_File(FILE *f_Des)
 {
 int line_number, formatFlag = 0;
 char *buffer = NULL;
-size_t bufferSize = 0;
-for (line_number = 1; getline(&buffer, &bufferSize, fileDescriptor) != -1; line_number++)
+size_t buffer_s = 0;
+for (line_number = 1; getline(&buffer, &buffer_s, f_Des) != -1; line_number++)
 {
 formatFlag = tokenizeLine(buffer, line_number, formatFlag);
 }
