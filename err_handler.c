@@ -13,34 +13,35 @@
  * Stack is too short for the operation.
  */
 void F_errorche(int error_code, ...)
-{	va_list ag;
-	char *op;
-	int l_num;
+{
+	va_list args;
 
-	va_start(ag, error_code);
-	switch (error_code)
+	va_start(args, error_code);
+
+	if (error_code == 1)
 	{
-		case 1:
-			fprintf(stderr, "USAGE: monty file\n");
-			break;
-		case 2:
-			fprintf(stderr, "Error: Can't open file %s\n",
-				va_arg(ag, char *));
-			break;
-		case 3:
-			l_num = va_arg(ag, int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
-			break;
-		case 4:
-			fprintf(stderr, "Error: malloc failed\n");
-			break;
-		case 5:
-			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
-			break;
-		default:
-			break;
+		fprintf(stderr, "USAGE: monty file\n");
 	}
+	else if (error_code == 2)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", va_arg(args, char *));
+	}
+	else if (error_code == 3)
+	{
+		int line_num = va_arg(args, int);
+		char *op = va_arg(args, char *);
+
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, op);
+	}
+	else if (error_code == 4)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+	}
+	else if (error_code == 5)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", va_arg(args, int));
+	}
+
 	free_nodes();
 	exit(EXIT_FAILURE);
 }
@@ -48,73 +49,72 @@ void F_errorche(int error_code, ...)
 /**
  * handleErrors - Function that handles errors in the program.
  *
- * @error_code: The error codes and their meanings are as follows:
+ * @errorCode: The error codes and their meanings are as follows:
  * Error1: Empty stack when 'pint' is called.
  * Error2: Empty stack when 'pop' is called.
  * Error3: Stack is too short for the operation.
  * Error4: Division by zero.
  */
-void handleErrors(int error_code, ...)
+void handleErrors(int errorCode, ...)
 {
-        va_list ag;
-	char *op;
-	int l_num;
+	va_list args;
+	char *operation;
+	int line_num;
 
-	va_start(ag, error_code);
-	switch (error_code)
+	va_start(args, errorCode);
+
+	if (errorCode == 6)
 	{
-		case 6:
-			fprintf(stderr, "L%d: can't pint, stack empty\n",
-				va_arg(ag, int));
-			break;
-		case 7:
-			fprintf(stderr, "L%d: can't pop an empty stack\n",
-				va_arg(ag, int));
-			break;
-		case 8:
-			l_num = va_arg(ag, unsigned int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
-			break;
-		case 9:
-			fprintf(stderr, "L%d: division by zero\n",
-				va_arg(ag, unsigned int));
-			break;
-		default:
-			break;
+		fprintf(stderr, "L%d: can't pint, stack empty\n", va_arg(args, int));
 	}
+	else if (errorCode == 7)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", va_arg(args, int));
+	}
+	else if (errorCode == 8)
+	{
+		line_num = va_arg(args, unsigned int);
+		operation = va_arg(args, char*);
+		fprintf(stderr, "L%d: can't %s, stack too short\n", line_num, operation);
+	}
+	else if (errorCode == 9)
+	{
+		fprintf(stderr, "L%d: division by zero\n", va_arg(args, unsigned int));
+	}
+
+	va_end(args);
 	free_nodes();
 	exit(EXIT_FAILURE);
 }
-
 
 /**
  * handleStr_Errors - Handles errors in the string processing function.
  *
  * This function is responsible for handling errors
  * that occur suring string processing
- * @error_code: The error codes are as follows:
+ * @errorCode: The error codes are as follows:
  * The which is number inside a node is outside the ASCII bounds.
  * The stack is totally empty.
  */
-void handleStr_Errors(int error_code, ...)
+void handleStr_Errors(int errorCode, ...)
 {
-        va_list ag;
-	int l_num;
+	va_list args;
+	int line_num;
 
-	va_start(ag, error_code);
-	l_num = va_arg(ag, int);
-	switch (error_code)
+	va_start(args, errorCode);
+	line_num = va_arg(args, int);
+
+	if (errorCode == 10)
 	{
-		case 10:
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
-			break;
-		case 11:
-			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
-			break;
-		default:
-			break;
+		fprintf(stderr, "Line %d: Cannot process character, value is out of range\n",
+				line_num);
 	}
+	else if (errorCode == 11)
+	{
+		fprintf(stderr, "Line %d: Cannot process character, stack is empty\n",
+				line_num);
+	}
+
 	free_nodes();
 	exit(EXIT_FAILURE);
 }
