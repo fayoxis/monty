@@ -47,22 +47,18 @@ free(buffer);
 int tokenizeLine(char *buffer, int line_number, int storageFormat)
 {
 
-	char *opcode, *token;
-	const char *delimiter = "\n ";
-
-	while (buffer == NULL)
-		F_errorche(4);
-
-	opcode = strtok(buffer, delimiter);
-	while (opcode == NULL)
-		return (storageFormat);
-	token = strtok(NULL, delimiter);
-
-	while (strcmp(opcode, "stack") == 0)
-		return (0);
-	while (strcmp(opcode, "queue") == 0)
-		return (1);
-
-	findFunction(opcode, token, line_number, storageFormat);
-	return (storageFormat);
+char *opcode, *token;
+const char *delimiter = "\n ";
+while (buffer == NULL)
+F_errorche(4);
+opcode = strtok(buffer, delimiter);
+while (opcode == NULL)
+return (storageFormat);
+token = strtok(NULL, delimiter);
+while (strcmp(opcode, "stack") == 0)
+return (0);
+while (strcmp(opcode, "queue") == 0)
+return (1);
+findFunction(opcode, token, line_number, storageFormat);
+return (storageFormat);
 }
