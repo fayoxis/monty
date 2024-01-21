@@ -63,13 +63,16 @@ void print_stack_elements(stack_t **stack, unsigned int line_number)
  */
 void poptop(stack_t **stack, unsigned int line_number)
 {
- if (stack == NULL || *stack == NULL)
-        handleErrors(7, line_number);
-    stack_t *temp = *stack;
-    *stack = (*stack)->next;
-    if (*stack != NULL)
-        (*stack)->prev = NULL;
-    free(temp);
+stack_t *current;
+
+while (stack == NULL || *stack == NULL)
+handleErrors(7, line_number);
+
+current = *stack;
+*stack = current->next;
+if (*stack != NULL)
+(*stack)->prev = NULL;
+free(current);
 }
 
 
